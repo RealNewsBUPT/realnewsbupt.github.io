@@ -1,0 +1,507 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+html {
+	font-size: 19px;
+}
+
+html, body {
+	margin: auto;
+	background: #fefefe;
+	-webkit-font-smoothing: antialiased;
+}
+body {
+	font-family: "Vollkorn", Palatino, Times;
+	color: #333;
+	line-height: 1.4;
+	text-align: justify;
+}
+
+#write {
+	max-width: 960px;
+	margin: 0 auto;
+	margin-bottom: 2em;
+	line-height: 1.53;
+	padding-top: 40px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1100px;
+	}
+}
+
+@media print {
+	html {
+		font-size: 13px;
+	}
+}
+
+/* Typography
+-------------------------------------------------------- */
+
+#write>h1:first-child,
+h1 {
+	margin-top: 1.6em;
+	font-weight: normal;
+}
+
+h1 {
+	font-size:3em;
+}
+
+h2 {
+	margin-top:2em;
+	font-weight: normal;
+}
+
+h3 {
+	font-weight: normal;
+	font-style: italic;
+	margin-top: 3em;
+}
+
+h1, 
+h2, 
+h3{
+	text-align: center;
+}
+
+h2:after{
+	border-bottom: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+    height: 1px;
+}
+
+h1+h2, h2+h3 {
+	margin-top: 0.83em;
+}
+
+p,
+.mathjax-block {
+	margin-top: 0;
+	-webkit-hypens: auto;
+	-moz-hypens: auto;
+	hyphens: auto;
+}
+ul {
+	list-style: square;
+	padding-left: 1.2em;
+}
+ol {
+	padding-left: 1.2em;
+}
+blockquote {
+	margin-left: 1em;
+	padding-left: 1em;
+	border-left: 1px solid #ddd;
+}
+code,
+pre {
+	font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
+	font-size: .9em;
+	background: white;
+}
+.md-fences{
+	margin-left: 1em;
+	padding-left: 1em;
+	border: 1px solid #ddd;
+	padding-bottom: 8px;
+	padding-top: 6px;
+	margin-bottom: 1.5em;
+}
+
+a {
+	color: #2484c1;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a img {
+	border: none;
+}
+h1 a,
+h1 a:hover {
+	color: #333;
+	text-decoration: none;
+}
+hr {
+	color: #ddd;
+	height: 1px;
+	margin: 2em 0;
+	border-top: solid 1px #ddd;
+	border-bottom: none;
+	border-left: 0;
+	border-right: 0;
+}
+.ty-table-edit {
+	background: #ededed;
+    padding-top: 4px;
+}
+table {
+	margin-bottom: 1.333333rem
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.333333rem;
+	vertical-align: top;
+	border-top: 1px solid #ddd
+}
+table th {
+	font-weight: bold
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+
+.task-list{
+	padding:0;
+}
+
+.md-task-list-item {
+	padding-left: 1.6rem;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.33333333rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #fefefe;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
+}
+.md-tag {
+	color: inherit;
+	font: inherit;
+}
+#write pre.md-meta-block {
+	min-height: 35px;
+	padding: 0.5em 1em;
+}
+#write pre.md-meta-block {
+	white-space: pre;
+	background: #f8f8f8;
+	border: 0px;
+	color: #999;
+	
+	width: 100vw;
+	max-width: calc(100% + 60px);
+	margin-left: -30px;
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+
+	margin-bottom: 2em;
+	margin-top: -1.3333333333333rem;
+	padding-top: 26px;
+	padding-bottom: 10px;
+	line-height: 1.8em;
+	font-size: 0.9em;
+	font-size: 0.76em;
+	padding-left: 0;
+}
+.md-img-error.md-image>.md-meta{
+	vertical-align: bottom;
+}
+#write>h5.md-focus:before {
+	top: 2px;
+}
+
+.md-toc {
+	margin-top: 40px;
+}
+
+.md-toc-content {
+	padding-bottom: 20px;
+}
+
+.outline-expander:before {
+	color: inherit;
+	font-size: 14px;
+	top: auto;
+	content: "\f0da";
+	font-family: FontAwesome;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  	content: "\f0d7";
+}
+
+/** source code mode */
+#typora-source {
+	font-family: Courier, monospace;
+    color: #6A6A6A;
+}
+
+.html-for-mac #typora-sidebar {
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.cm-s-typora-default .cm-header, 
+.cm-s-typora-default .cm-property,
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+	color: #428bca;
+}
+
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
+	color: #777777;
+}
+
+.typora-node .file-list-item-parent-loc, 
+.typora-node .file-list-item-time, 
+.typora-node .file-list-item-summary {
+	font-family: arial, sans-serif;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+    margin-top: calc(1rem - 12px);
+}
+
+.md-mathjax-midline {
+	background: #fafafa;
+}
+
+.md-fences .code-tooltip {
+	bottom: -2em !important;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+
+</style><title>邮邮坛新闻</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='2023612'><span>2023/6/12</span></h1><ol start='' ><li><p><span>《中国教育报》头版刊发文章报道北邮主题教育经验做法：《剑指强国之需，筑牢人才之基》</span></p></li><li><p><span>徐坤校长主持召开本科教学工作汇报会，副校长孙洪祥、教务处和教材办公室处级领导、各学院及体育部教学院长参加了此次会议</span></p></li></ol><p><strong><span>青年校友专题：</span></strong></p><ol start='' ><li><p><span>【学术界】</span><strong><span>Hang Shi</span></strong><span>：北京邮电大学软件工程硕士（2017），波士顿大学博士，</span><strong><span>麻省理工学院Sloan商学院Research Assistant</span></strong></p></li><li><p><span>【学术界】</span><strong><span>Jie Li</span></strong><span>：北京邮电大学通信工程学士（2009），康奈尔大学硕士（2011）及博士（2017），</span><strong><span>康奈尔大学Dyson应用经济学与管理学院Senior Research Associate</span></strong></p></li><li><p><span>【学术界】</span><strong><span>Shixiang (Woody) Zhu</span></strong><span>：北京邮电大学计算机科学与技术本硕（2014，2017），佐治亚理工学院博士（2022），卡耐基梅隆大学助理教授（2022起）</span></p></li></ol><p>&nbsp;</p><h1 id='2023611'><span>2023/6/11</span></h1><ol start='' ><li><p><span>近日，中国气象局臧海佳副司长一行来我校调研洽谈，我校副校长张建华出席，科研院、发展规划处、研究生院和人工智能学院相关专家代表参加调研座谈。双方就推动气象创新联盟等方面合作达成共识，后续将进一步推进相关合作落地落实</span></p></li></ol><p><strong><span>校友专题：</span></strong></p><ol start='' ><li><p><span>【工业界 and 政界】</span><strong><span>王晓云</span></strong><span>：北京邮电学院无线电工程系毕业，</span><strong><span>中共第二十届中央候补委员</span></strong><span>，中国移动通信技术部长（中国移动技术部一把手），原邮电部移动通信局技术部负责人。2017年获全国创新争先奖</span></p></li><li><p><span>【工业界 and 政界】</span><strong><span>王晓初</span></strong><span>：北京邮电学院毕业（1980），</span><strong><span>中国电信股份有限公司董事长、总经理（2004），中国联通董事长（2015）</span></strong><span>；中共第十七、十八届</span><strong><span>中央候补委员</span></strong><span>。曾任天津市邮电管理局局长，</span><strong><span>中国移动香港公司董事长、总经理（1999）</span></strong><span>等职务</span></p></li></ol><p>&nbsp;</p><h1 id='2023610'><span>2023/6/10</span></h1><ol start='' ><li><p><span>原中国科学院自动化研究所张树武研究员已入职我校人工智能学院。张树武研究员是首批国家中青年科技领军创新人才、中国科学院特聘核心骨干研究员、数字内容技术与服务研究中心主任、国家文化科技创新工程专家组组长、科技部现代服务业领域总体专家组副组长、国家新闻出版数字版权服务技术重点实验室主任、国家新闻出版重大科技工程《数字版权保护技术研发工程》首席专家</span></p></li></ol><p><strong><span>校友专题：</span></strong></p><ol start='' ><li><p><span>【学术界】</span><strong><span>迟楠</span></strong><span>：北京邮电大学电信工程学院博士，</span><strong><span>复旦大学信息学院院长</span></strong><span>、信息学院学术委员会委员、信息学院教授委员会成员</span></p></li><li><p><span>【学术界】</span><strong><span>余建军</span></strong><span>：北京邮电大学博士，</span><strong><span>IEEE Fellow</span></strong><span>，</span><strong><span>OSA Fellow</span></strong><span>，</span><strong><span>复旦大学信息学院教授、博士生导师</span></strong><span>，曾任佐治亚理工学院研究员、中兴通讯美国光波所所长和高速光通信首席科学家，研究兴趣包括高速光纤通信技术、光子辅助毫米波通信技术、光纤无线融合技术等</span></p></li><li><p><span>【学术界】</span><strong><span>李丹</span></strong><span>：北京邮电大学经济学学士，波士顿大学经济学博士，</span><strong><span>复旦大学经济学院教授、博士生导师，复旦大学国际合作与交流处副处长</span></strong></p></li><li><p><span>【学术界】</span><strong><span>邝育军</span></strong><span>：北京邮电大学通信与信息系统博士（2003），现任电子科技大学信息与通信工程学院教授、博士生导师，</span><strong><span>在职去世</span></strong></p></li><li><p><span>【学术界】</span><strong><span>王子南</span></strong><span>：北京邮电大学电磁场与微波技术博士（2009），现任电子科技大学信息与通信工程学院教授、博士生导师。长期从事智能信息感知与先进激光技术研究，代表性成果入选美国光学学会（OSA）评选的年度全球30项最激动人心的光学进展之一，荣获中国光学工程学会科技创新奖一等奖</span></p></li><li><p><span>【学术界】</span><strong><span>陈爱国</span></strong><span>：北京邮电大学信号与信息处理博士（2009），现任电子科技大学计算机学院教授、博士生导师，中国计算机学会高级会员，四川省海外高层次留学人才。主持完成国家级和省部级项目6项，主持或主研完成其他项目30余项，包括国家载人航天国家重大专项、总装重点基金、军口863计划、科技部重点研发计划，以及国家发改委重大工程等。曾获得国家技术发明二等奖、四川省科技进步一等奖、四川省技术发明一等奖</span></p></li></ol><p>&nbsp;</p><p>&nbsp;</p><h1 id='202369'><span>2023/6/9</span></h1><ol start='' ><li><p><span>研究生招生网发布《北京邮电大学2023年全国优秀大学生暑期夏令营通知》，参与学院包括信通院、电子院、计算机院、网安院、马院、教育技术研究所</span></p></li></ol><p><strong><span>校友专题：</span></strong></p><ol start='' ><li><p><span>【体育界】</span><strong><span>华学明</span></strong><span>：北京邮电大学公共管理专业毕业，中国围棋女棋手，中国围棋协会副主席（2018起），中国国家围棋队领队（2005起）</span></p></li><li><p><span>【文艺界】</span><strong><span>邢捕头</span></strong><span>：邢育森，北京邮电大学信息工程博士，网络作家，家有儿女编剧，网络文学的“三驾马车”之一。P.S. 武林外传也有一位邢捕头，实际上“邢捕头”是邢育森上学时的绰号，武林外传编剧宁财神与邢育森相识，借用其名字作为剧中人物名字</span></p></li><li><p><span>【政界】</span><strong><span>买彦州</span></strong><span>：北京邮电大学电子与信息工程硕士（1998），现任宁夏回族自治区党委委员、常委，宁夏自治区人民政府副主席（2022年6月起）。曾任中国网通集团广东省分公司副总经理、党组成员、纪检组长，中国联通广东省分公司副总经理、党委委员，中国联通福建省、辽宁省分公司总经理、党委书记。2017年12月任中国联通集团副总经理、党组成员</span></p></li><li><p><span>【童年回忆】</span><strong><span>吴立立</span></strong><span>：北京邮电学院计算机本硕（1989，1992），广州百田信息科技有限公司创始人、执行董事，中国儿童互联网市场的开拓者和领军人物，</span><strong><span>代表作品奥比岛、奥拉星、奥奇传说等</span></strong></p></li></ol><p>&nbsp;</p><p>&nbsp;</p><h1 id='202368'><span>2023/6/8</span></h1><ol start='' ><li><p><span>6月7日上午我校召开2023年本科招生动员会，副校长孙洪祥、教务处处长兼招生办公室主任卞佳丽、招生办公室副主任陈伟、530位本科招生教师参加会议</span></p></li><li><p><span>6月7日上午，南京邮电大学党委书记刘陈、校长叶美兰带队来我校调研交流，我校党委书记续梅、校长徐坤参加调研。南邮领导班子一行还参观了网络与交换技术全国重点实验室、信息光子学与光通信全国重点实验室</span></p></li><li><p><span>我校邓中亮教授因在无线网络定位领域取得的重大突破获“北京市有突出贡献人才”称号（三年评一次，全京所有行业总计约50人，高校一般不超过10人）</span></p></li></ol><p><strong><span>校友专题：</span></strong></p><ol start='' ><li><p><span>【商界】</span><strong><span>魏小华</span></strong><span>：北京邮电大学科技英语工学学士，</span><strong><span>华润集团执行董事兼副总裁</span></strong><span>，拥有地产及企业管理等方面的经验，曾担任华润置地商业地产事业部总经理</span></p></li><li><p><span>【政界】</span><strong><span>赵海山</span></strong><span>：北京邮电大学无线电工程系毕业（1984），湖北省人民政府党组成员、副省长（2018年11月至2023年4月），天津市政协党组成员（2023年4月至今）。曾任天津市人民政府副市长、党组成员，天津市委科技工委书记、市科委主任，航天科工集团三院第八三五八所第一副所长</span></p></li><li><p><span>【工业界】</span><strong><span>熊秉群</span></strong><span>：其父为著名数学家熊庆来院士（学生包括华罗庚、许宝騄、严济慈、钱三强、钱伟长、陈省身等），北京邮电学院电话电报通讯专业毕业，</span><strong><span>在北邮执教27年，后出任电信科学技术研究院长</span></strong><span>，并以西安大唐为基础、电信科学研究院为依托，将研究院的优质资产剥离重组，</span><strong><span>组织成立大唐电信科技股份有限公司</span></strong><span>，在1998年8月发行股票，10月正式上市成功，成为我国国家级的研究院第一个改制成功上市的公司，为民族电信设备制造业的崛起起到了积极推动的作用</span></p></li><li><p><span>【学术界】</span><strong><span>费爱国</span></strong><span>：北京邮电学院硕士，</span><strong><span>中国工程院院士、空军装备研究院少将</span></strong><span>，指挥信息系统和数据链专家，是我国空军网络化指挥信息系统主要开拓者之一，担任多个国家和军队重大项目总工程师，主持研制我军第一代航空数据链系统、首套出口型防空指挥信息系统和空军首套网络化区域指挥信息系统，为促进我国空军指挥信息系统建设做出突出贡献</span></p></li></ol><p>&nbsp;</p><h1 id='202367'><span>2023/6/7</span></h1><ol start='' ><li><p><span>朱松纯教授将于6月8日于学生活动中心举办学术讲座。朱松纯教授是计算机视觉领域世界级知名学者，曾为加州大学洛杉矶分校教授，2020年回国，现担任北京大学人工智能研究院院长，以及清华大学通用人工智能研究院院长</span></p></li><li><p><span>我校经济管理学院教授何瑛在光明日报发表文章《探索数字化变革推动中小企业高质量发展的有效路径》</span></p></li></ol><p><strong><span>校友专题：</span></strong></p><ol start='' ><li><p><span>【工业界】</span><strong><span>何庭波</span></strong><span>：北京邮电大学通信和半导体物理专业硕士，</span><strong><span>华为董事、海思总裁、2012实验室技术总裁、华为科学家委员会主任</span></strong><span>。1996年加入华为，历任芯片业务总工程师、海思研发管理部部长等职务</span></p></li><li><p><span>【学术界】</span><strong><span>卢建军</span></strong><span>：北京邮电学院无线电工程学士，</span><strong><span>西安交通大学党委书记（副部长级）</span></strong><span>，中共十九大代表、二十大代表，第十三届、十四届陕西省委委员，陕西省第十三次党代会代表。</span><strong><span>曾任陕西省发改委主任，陕西省委常委、秘书长，省委直属机关工委书记等职</span></strong></p></li></ol><p>&nbsp;</p><h1 id='202366'><span>2023/6/6</span></h1><ol start='' ><li><p><span>研究生暑期课程将邀请中航某所副所长、中电首席科学家、航天通信技术委员会主席、航天五院主任、中电某所所长、中电54所副总工、航天科工二十五所研究室主任、中国移动首席专家、中国电信光传输首席专家、中国联通研究院副院长、华为光技术首席专家等专家，开展《总师讲堂》和《首席讲坛》</span></p></li><li><p><span>尹长川同志任信息与通信工程学院党委委员、书记（试用期一年）</span></p></li></ol><p><strong><span>校友专题：</span></strong></p><ol start='' ><li><p><span>【工业界】</span><strong><span>孟樸</span></strong><span>：北京邮电大学微波和光通讯学士，</span><strong><span>高通中国区董事长</span></strong><span>，全面负责高通在中国区的业务和运营，包括执行公司及其业务战略举措，进一步加强高通与中国移动产业链和半导体领域的合作。曾任</span><strong><span>摩托罗拉移动高级副总裁兼大中华区总裁</span></strong></p></li><li><p><span>【学术界】</span><strong><span>迟楠</span></strong><span>：北京邮电大学电信工程学院博士，</span><strong><span>复旦大学信息学院院长</span></strong><span>、信息学院学术委员会委员、信息学院教授委员会成员</span></p></li></ol><p>&nbsp;</p><h1 id='202365'><span>2023/6/5</span></h1><ol start='' ><li><p><span>本周将连续召开三场本科招生相关会议（周二/周三/周四每天一场）</span></p></li><li><p><span>教育部：徐坤试用期满正式任职</span></p></li><li><p><span>2023年6月新入职教师包括1个A类人才和23个B类人才，邮邮坛记者将为您持续报道7月、8月及之后的新入职教师情况</span></p></li></ol><p><strong><span>旧闻专题：</span></strong></p><ol start='' ><li><p><span>【校园考古】2002年3月7日上午，北邮师生翘首以待的教三楼奠基典礼正式举行，据悉，教三楼由清华大学建筑设计院承担设计，是我校“211”工程配套的重大基建项目，总面积41588平方米，地上10层，地下2层，建筑高度为56.15米，总工程造价约1.5亿元，预计将在明年6月以前竣工</span></p></li><li><p><span>【历史上的今天】2003年6月5日消息：截止到今日17:00，在校医院和东塔楼接受观察共20人——北京邮电大学“非典”防治领导小组办公室</span></p></li></ol><p>&nbsp;</p><h1 id='202364'><span>2023/6/4</span></h1><ol start='' ><li><p><span>我校党委书记续梅在人民日报发表文章《立德树人 铸魂育人（教育时评）》</span></p></li><li><p><span>沙河校区建设用地完成拨地测绘项目招标工作</span></p></li><li><p><span>教育部一线采风《北京邮电大学强化科技创新 助力高水平科技自立自强》</span></p></li></ol><p>&nbsp;</p><h1 id='202363'><span>2023/6/3</span></h1><ol start='' ><li><p><span>校党委书记续梅赴玛丽女王海南学院调研</span></p></li><li><p><span>计算机学院（国家示范性软件学院）获批文化和旅游部“文化和旅游研究基地”（我校为唯一入选的理工科高校）</span></p></li><li><p><span>网络空间安全学院召开一流网安学院评估动员会</span></p></li></ol><p><strong><span>旧闻专题：</span></strong></p><ol start='' ><li><p><span>【jojo专题】为实施人才强校战略，加快推进学校世界一流大学和一流学科建设，我校于2018年6月21日在美国斯坦福大学举行了海外高层次人才招聘会。我校乔建永校长亲自率代表团赴美参加招聘会。团组成员包括国际合作与交流处副处长王尧、软件学院副院长王莉。专场招聘会吸引了来自美国斯坦福大学、南加州大学、宾夕法尼亚大学、弗吉尼亚大学、史蒂文斯理工大学、乔治华盛顿大学、德国太空研究院、美国苹果公司、谷歌公司、亚马逊公司等世界知名大学、研究机构和企业的40余位学者、博士（后）和留学生，涵盖无线通信、光电子、云计算、互联网、人工智能等多个学科领域</span></p></li></ol></div></div>
+</body>
+</html>
